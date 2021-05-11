@@ -6,11 +6,10 @@ using std::cout;
 using std::endl;
 using std::string;
 
-string stringToUpper(char* input) {
-    string result = input;
-    for (string::iterator itr = result.begin(); itr != result.end(); ++itr)
+string stringToUpper(string s) {
+    for (string::iterator itr = s.begin(); itr != s.end(); ++itr)
         *itr = (char)std::toupper(*itr);
-    return result;
+    return s;
 }
 
 int main(int argc, char* argv[]) {

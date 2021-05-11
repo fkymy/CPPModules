@@ -1,14 +1,14 @@
-# Makefile for minishell, updated Mon May 10 19:02:12 JST 2021
+# updated Tue May 11 12:34:57 JST 2021
 
-SRC := megaphone.cpp
+SRC := Contact.cpp Main.cpp phonebook.cpp
 
-OBJ := megaphone.o
+OBJ := Contact.o Main.o phonebook.o
 
-HDR :=
+HDR := Contact.hpp Phonebook.hpp
 
 # DO NOT ADD OR MODIFY ANY LINES ABOVE THIS -- run 'make source' to add files
 #
-PROGRAM := megaphone
+PROGRAM := phonebook
 
 CXX := clang++
 WARNINGS := -Wall -Wextra -Werror
