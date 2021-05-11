@@ -19,7 +19,11 @@ string getCommand(const string& prompt = "Enter a command: ",
     while (true) {
         cout << prompt;
         string line;
-        std::getline(cin, line);
+        if (!std::getline(cin, line))
+            return "EXIT";
+
+        if (line.empty())
+            continue;
 
         if (validCommand(line))
             return line;
@@ -57,21 +61,17 @@ void addContact(Phonebook& phonebook) {
 
     if (!phonebook.add(newContact)) {
         cout << "Failed to add phonebook." << endl;
+    } else {
+        cout << "Contact added." << endl;
     }
 }
 
 void searchContact(Phonebook& phonebook) {
-    std::pair<Contact, bool> ret;
     int index;
 
     phonebook.show();
-
     index = getInteger("index: ");
-    ret = phonebook.get(index);
-    if (ret.second)
-        ret.first.displayInfo();
-    else
-        cout << "Not found" << endl;
+    phonebook.show(index);
 }
 
 int main() {

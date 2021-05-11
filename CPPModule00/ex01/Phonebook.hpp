@@ -12,16 +12,14 @@ public:
     const static int kNumContacts = 8;
 
     void show() const;
+    void show(int index) const;
     bool add(Contact contact);
-    std::pair<Contact, bool> get(int index) const;
-
 
 private:
     int numContacts;
     std::array<Contact, kNumContacts> contacts;
 
-    bool validCommand();
-    bool full() const;
+    std::string truncate(std::string &field, std::string::size_type width) const;
 };
 
 #endif

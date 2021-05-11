@@ -11,7 +11,7 @@ Contact::Contact() {
 
 void Contact::set(std::string fieldName, std::string line) {
 #define X(field, prompt)\
-    if (fieldName == field) {\
+    if (fieldName == #field) {\
         field = line;\
         return;\
     }
@@ -20,7 +20,7 @@ void Contact::set(std::string fieldName, std::string line) {
 }
 
 void Contact::displayInfo() const {
-#define X(field, prompt) std::cout << field << std::endl;
+#define X(field, prompt) std::cout << #prompt << ": " << field << std::endl;
     CONTACT_FIELDS
 #undef X
 }
