@@ -22,12 +22,11 @@ class Contact {
 public:
     Contact();
 
-    void set(std::string fieldName, std::string line);
+    void set(const std::string& fieldName, const std::string& line);
     void displayInfo() const;
-    int getFields();
-    std::string getFirstName() const;
-    std::string getLastName() const;
-    std::string getNickname() const;
+    const std::string& getFirstName() const;
+    const std::string& getLastName() const;
+    const std::string& getNickname() const;
 
 private:
 #define X(field, prompt) std::string field;

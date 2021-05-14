@@ -7,19 +7,16 @@
 #include "Phonebook.hpp"
 #include "Contact.hpp"
 
-using std::cout;     using std::cin;
-using std::endl;     using std::string;
-
-bool validCommand(const string &s) {
+bool validCommand(const std::string &s) {
     return s == "EXIT" || s == "ADD" || s == "SEARCH";
 }
 
-string getCommand(const string& prompt = "Enter a command: ",
-                  const string& reprompt = "Not a command. Try again\n") {
+std::string getCommand(const std::string& prompt = "Enter a command: ",
+                  const std::string& reprompt = "Not a command. Try again\n") {
     while (true) {
-        cout << prompt;
-        string line;
-        if (!std::getline(cin, line))
+        std::cout << prompt;
+        std::string line;
+        if (!std::getline(std::cin, line))
             return "EXIT";
 
         if (line.empty())
@@ -28,41 +25,41 @@ string getCommand(const string& prompt = "Enter a command: ",
         if (validCommand(line))
             return line;
 
-        cout << reprompt << endl;
+        std::cout << reprompt << std::endl;
     }
 }
 
-int getInteger(const string& prompt = "Enter an integer: ",
-               const string& reprompt = "Illegal numeric format. Try again\n") {
+int getInteger(const std::string& prompt = "Enter an integer: ",
+               const std::string& reprompt = "Illegal numeric format. Try again\n") {
     while (true) {
-        cout << prompt;
-        string line;
-        std::getline(cin, line);
+        std::cout << prompt;
+        std::string line;
+        std::getline(std::cin, line);
 
         std::istringstream iss(line);
         int value; char remain;
         if (iss >> value && !(iss >> remain))
             return value;
 
-        cout << reprompt << endl;
+        std::cout << reprompt << std::endl;
     }
 }
 
 void addContact(Phonebook& phonebook) {
     Contact newContact;
-    string line;
+    std::string line;
 
-#define X(field, prompt)          \
-    cout << prompt << ": ";       \
-    std::getline(cin, line);      \
+#define X(field, prompt)     \
+    std::cout << prompt << ": ";  \
+    std::getline(std::cin, line); \
     newContact.set(#field, line);
     CONTACT_FIELDS
 #undef X
 
     if (!phonebook.add(newContact)) {
-        cout << "Failed to add phonebook." << endl;
+        std::cout << "Failed to add phonebook." << std::endl;
     } else {
-        cout << "Contact added." << endl;
+        std::cout << "Contact added." << std::endl;
     }
 }
 
@@ -74,21 +71,45 @@ void searchContact(Phonebook& phonebook) {
     phonebook.show(index);
 }
 
+// #include <vector>
+// std::string test() {
+//     std::vector<string> v(10);
+//
+//     v[0] = "hello";
+//
+//     return v[0];
+// }
+
 int main() {
+    // Contact contact;
+    //
+    // contact.set("firstName", "yufukuya");
+    //
+    // // std::cout << contact.getFirstName() << std::endl;
+    //
+    // // std::cout << (contact.getFirstName() = "fkymy") << std::endl;
+    // // std::cout << (contact.getFirstName() += "why") << std::endl;
+    //
+    // std::string firstName = contact.getFirstName();
+    //
+    // std::cout << firstName << std::endl;
+    // firstName = "fkymy";
+    // std::cout << firstName << std::endl;
+    //
+    // std::cout << contact.getFirstName() << std::endl;
+
+
     Phonebook phonebook;
-    string command;
+    std::string command;
 
     while (true) {
         command = getCommand("phonebook> ");
-        if (command == "EXIT") {
-            cout << "Quitting..." << endl;
+        if (command == "EXIT")
             return 0;
-        }
         if (command == "ADD")
             addContact(phonebook);
         if (command == "SEARCH")
             searchContact(phonebook);
     }
-
     return 0;
 }

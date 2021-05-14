@@ -9,7 +9,7 @@ Contact::Contact() {
 #undef X
 }
 
-void Contact::set(std::string fieldName, std::string line) {
+void Contact::set(const std::string& fieldName, const std::string& line) {
 #define X(field, prompt)\
     if (fieldName == #field) {\
         field = line;\
@@ -25,14 +25,14 @@ void Contact::displayInfo() const {
 #undef X
 }
 
-std::string Contact::getFirstName() const {
+const std::string& Contact::getFirstName() const {
     return firstName;
 }
 
-std::string Contact::getLastName() const {
+const std::string& Contact::getLastName() const {
     return lastName;
 }
 
-std::string Contact::getNickname() const {
+const std::string& Contact::getNickname() const {
     return nickname;
 }

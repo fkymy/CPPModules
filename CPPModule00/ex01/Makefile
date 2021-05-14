@@ -12,7 +12,7 @@ PROGRAM := phonebook
 
 CXX := clang++
 WARNINGS := -Wall -Wextra -Werror
-CXXFLAGS := $(WARNINGS) -g -pedantic -std=c++98
+CXXFLAGS := $(WARNINGS) -std=c++98
 
 .PHONY: all clean source
 all: $(PROGRAM)

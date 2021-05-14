@@ -9,17 +9,17 @@ class Phonebook {
 public:
     Phonebook();
 
-    const static int kNumContacts = 8;
-
     void show() const;
     void show(int index) const;
     bool add(Contact contact);
 
 private:
+    const static int kNumContacts = 8;
     int numContacts;
-    std::array<Contact, kNumContacts> contacts;
+    Contact contacts[kNumContacts];
+    // std::array<Contact, kNumContacts> contacts;
 
-    std::string truncate(std::string &field, std::string::size_type width) const;
+    std::string truncate(const std::string &field, std::string::size_type width) const;
 };
 
 #endif
