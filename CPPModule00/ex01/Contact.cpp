@@ -1,7 +1,7 @@
-#include <string>
-#include <iostream>
-
 #include "Contact.hpp"
+
+#include <iostream>
+#include <string>
 
 Contact::Contact() {
 #define X(field, prompt) field = "(none)";
@@ -9,10 +9,10 @@ Contact::Contact() {
 #undef X
 }
 
-void Contact::set(const std::string& fieldName, const std::string& line) {
+void Contact::set(const std::string& fieldName, const std::string& input) {
 #define X(field, prompt)\
     if (fieldName == #field) {\
-        field = line;\
+        field = input;\
         return;\
     }
     CONTACT_FIELDS

@@ -1,8 +1,8 @@
-# updated Tue May 11 12:34:57 JST 2021
+# updated Mon May 17 13:14:00 JST 2021
 
-SRC := Contact.cpp Main.cpp phonebook.cpp
+SRC := Contact.cpp Phonebook.cpp main.cpp
 
-OBJ := Contact.o Main.o phonebook.o
+OBJ := Contact.o Phonebook.o main.o
 
 HDR := Contact.hpp Phonebook.hpp
 

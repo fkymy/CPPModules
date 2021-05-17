@@ -1,21 +1,21 @@
-#include <iostream>
-#include <iomanip>
-#include <string>
-#include <utility>
 #include "Phonebook.hpp"
 
-Phonebook::Phonebook() {
-    numContacts = 0;
-}
+#include <iomanip>
+#include <iostream>
+#include <string>
+#include <utility>
 
-std::string Phonebook::truncate(const std::string &field, std::string::size_type width) const {
-    std::string ret;
+Phonebook::Phonebook() { numContacts = 0; }
+
+std::string Phonebook::truncate(const std::string& field,
+                                std::string::size_type width) const {
+    std::string result;
 
     if (field.length() > width)
-        ret = field.substr(0, width - 1) + ".";
+        result = field.substr(0, width - 1) + ".";
     else
-        ret = field;
-    return ret;
+        result = field;
+    return result;
 }
 
 void Phonebook::show() const {
@@ -36,7 +36,6 @@ void Phonebook::show() const {
         std::cout << std::right << std::setw(10) << truncate(nickname, 10) << "|";
         std::cout << std::endl;
     }
-
 }
 
 void Phonebook::show(int index) const {
@@ -47,9 +46,13 @@ void Phonebook::show(int index) const {
     contacts[index].displayInfo();
 }
 
-bool Phonebook::add(Contact contact) {
+bool Phonebook::add(const Contact& contact) {
     if (numContacts == kNumContacts) return false;
     contacts[numContacts] = contact;
     ++numContacts;
     return true;
+}
+
+int Phonebook::getNumContacts() const {
+    return numContacts;
 }

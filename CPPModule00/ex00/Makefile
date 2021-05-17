@@ -1,4 +1,4 @@
-# Makefile for minishell, updated Mon May 10 19:02:12 JST 2021
+# updated Mon May 10 19:02:12 JST 2021
 
 SRC := megaphone.cpp
 
@@ -7,7 +7,7 @@ OBJ := megaphone.o
 HDR :=
 
 # DO NOT ADD OR MODIFY ANY LINES ABOVE THIS -- run 'make source' to add files
-#
+
 PROGRAM := megaphone
 
 CXX := clang++

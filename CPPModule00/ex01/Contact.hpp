@@ -3,8 +3,6 @@
 
 #include <string>
 
-const int kNumContacts = 8;
-
 #define CONTACT_FIELDS \
     X(firstName, "first name") \
     X(lastName, "last name") \
@@ -22,7 +20,7 @@ class Contact {
 public:
     Contact();
 
-    void set(const std::string& fieldName, const std::string& line);
+    void set(const std::string& fieldName, const std::string& input);
     void displayInfo() const;
     const std::string& getFirstName() const;
     const std::string& getLastName() const;
