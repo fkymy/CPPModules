@@ -2,12 +2,12 @@
 #define ZOMBIE_EVENT_H
 
 #include <string>
+
 #include "Zombie.hpp"
 
 class ZombieEvent {
 public:
     ZombieEvent();
-    ~ZombieEvent();
 
     void setZombieType(int val);
     Zombie* newZombie(std::string name);

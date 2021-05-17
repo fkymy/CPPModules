@@ -7,10 +7,6 @@ Zombie::Zombie() {
     type = 0;
 }
 
-Zombie::~Zombie() {
-
-}
-
 void Zombie::setName(std::string s) {
     name = s;
 }
@@ -20,9 +16,6 @@ void Zombie::setType(int val) {
 }
 
 void Zombie::announce() const {
-    std::string types[] = {"TypeA", "TypeB", "TypeC",
-                           "TypeD", "TypeE", "TypeF"};
-
-    std::cout << "< " << name << " (" << types[type % 6] << ")> "
+    std::cout << "<" << name << " (" << type << ")> "
               << "Braiiiiiiinnnssss..." << std::endl;
 }

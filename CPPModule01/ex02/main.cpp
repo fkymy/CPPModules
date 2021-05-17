@@ -8,10 +8,10 @@
 #include "ZombieEvent.hpp"
 
 const std::string names[] = {"yufukuya", "fukuyama", "fukuyamay", "mayfukuya",
-                             "fkymy",    "yuskef",   "yskf"};
+                             "fkymy",    "yuskef",   "yskf", "yf"};
 
 void randomChump(ZombieEvent& event) {
-    std::string name = names[rand() % 7];
+    std::string name = names[rand() % 8];
     Zombie *zombie = event.newZombie(name);
     zombie->announce();
     delete zombie;
@@ -27,6 +27,5 @@ int main() {
         randomChump(event);
     }
 
-    system("leaks zombie");
     return 0;
 }

@@ -7,9 +7,3 @@ void memoryLeak()
     std::cout << *panther << std::endl;
     delete panther;
 }
-
-int main() {
-    memoryLeak();
-    system("leaks a.out");
-    return 0;
-}

@@ -1,3 +1,4 @@
+#include <new>
 #include <string>
 #include "Zombie.hpp"
 #include "ZombieEvent.hpp"
@@ -11,14 +12,10 @@ void ZombieEvent::setZombieType(int val) {
 }
 
 Zombie* ZombieEvent::newZombie(std::string name) {
-    Zombie *zombie = new Zombie;
-    if (!zombie)
-        return (NULL);
+    Zombie* zombie = new (std::nothrow) Zombie;
+    if (zombie == 0)
+        return (0);
     zombie->setType(type);
     zombie->setName(name);
     return zombie;
-}
-
-ZombieEvent::~ZombieEvent() {
-
 }

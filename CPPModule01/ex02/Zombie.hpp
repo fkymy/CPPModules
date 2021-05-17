@@ -6,11 +6,11 @@
 class Zombie {
 public:
     Zombie();
-    ~Zombie();
 
+    void announce() const;
     void setName(std::string s);
     void setType(int val);
-    void announce() const;
+
 private:
     std::string name;
     int type;
