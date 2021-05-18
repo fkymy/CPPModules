@@ -12,7 +12,7 @@ Fixed::Fixed(const int num) {
 
 Fixed::Fixed(const float num) {
     std::cout << "Float constructor called" << std::endl;
-    raw = roundf(num * (1 << b));
+    raw = (int)roundf(num * (1 << b));
 }
 
 Fixed::Fixed(const Fixed& other) {
@@ -41,13 +41,14 @@ void Fixed::setRawBits(const int raw) {
 }
 
 int Fixed::toInt() const {
-    return roundf(raw >> b);
+    return raw >> b;
 }
 
 float Fixed::toFloat() const {
     return (float)raw / (float)(1 << b);
 }
 
-std::ostream& operator<<(std::ostream& os, const Fixed& f) {
-    return os << f.toFloat();
+std::ostream& operator<<(std::ostream& stream, const Fixed& f) {
+    stream << f.toFloat();
+    return stream;
 }

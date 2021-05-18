@@ -24,6 +24,6 @@ private:
     static const int b = 8;
 };
 
-std::ostream& operator<<(std::ostream& os, const Fixed& f);
+std::ostream& operator<<(std::ostream& stream, const Fixed& f);
 
 #endif /* FIXED_HPP */
