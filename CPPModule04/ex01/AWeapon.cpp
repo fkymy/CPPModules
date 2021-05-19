@@ -5,7 +5,9 @@ AWeapon::AWeapon() {}
 AWeapon::AWeapon(std::string const& name, int apcost, int damage)
     : name(name), apcost(apcost), damage(damage) {}
 
-AWeapon::AWeapon(const AWeapon& other) {}
+AWeapon::AWeapon(const AWeapon& other) {
+    *this = other;
+}
 
 AWeapon& AWeapon::operator=(const AWeapon& other) {
     if (this != &other) {
