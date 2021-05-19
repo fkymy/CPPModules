@@ -21,5 +21,6 @@ int main() {
     horde3.announce();
 
     system("leaks a.out");
+
     return 0;
 }

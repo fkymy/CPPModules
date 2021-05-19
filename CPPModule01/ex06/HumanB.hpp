@@ -8,8 +8,7 @@
 
 class HumanB {
 public:
-    HumanB();
-    HumanB(std::string name);
+    explicit HumanB(std::string name);
 
     void setWeapon(const Weapon& w);
     void attack() const;

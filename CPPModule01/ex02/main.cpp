@@ -10,8 +10,7 @@ const std::string names[] = {"yufukuya", "fukuyama", "fukuyamay", "mayfukuya",
                              "fkymy",    "yuskef",   "yskf", "yf"};
 
 void randomChump(ZombieEvent& event) {
-    std::string name = names[rand() % 8];
-    Zombie *zombie = event.newZombie(name);
+    Zombie *zombie = event.newZombie(names[rand() % 8]);
     zombie->announce();
     delete zombie;
 }
@@ -25,6 +24,8 @@ int main() {
         event.setZombieType(i);
         randomChump(event);
     }
+
+    system("leaks a.out");
 
     return 0;
 }

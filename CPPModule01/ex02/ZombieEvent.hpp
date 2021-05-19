@@ -1,6 +1,7 @@
 #ifndef ZOMBIE_EVENT_H
 #define ZOMBIE_EVENT_H
 
+#include <new>
 #include <string>
 
 #include "Zombie.hpp"

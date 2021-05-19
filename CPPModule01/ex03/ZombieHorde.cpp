@@ -20,8 +20,7 @@ ZombieHorde::ZombieHorde(int N) {
 }
 
 ZombieHorde::~ZombieHorde() {
-    if (numZombies <= 0)
-        return;
+    if (numZombies <= 0) return;
     delete[] zombies;
 }
 

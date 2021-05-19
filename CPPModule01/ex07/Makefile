@@ -1,8 +1,8 @@
-# updated Mon May 17 19:15:21 JST 2021
+# updated Wed May 19 14:34:49 JST 2021
 
-SRC := main.cpp
+SRC := replace.cpp
 
-OBJ := main.o
+OBJ := replace.o
 
 HDR :=
 

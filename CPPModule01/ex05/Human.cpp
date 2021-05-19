@@ -1,7 +1,5 @@
 #include "Human.hpp"
 
-#include <string>
-
 #include "Brain.hpp"
 
 const Brain& Human::getBrain() const {

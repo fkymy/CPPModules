@@ -1,7 +1,9 @@
 #include "Brain.hpp"
 
-#include <sstream>
-#include <string>
+Brain::Brain() {
+    eq = 42;
+    iq = 42;
+}
 
 std::string Brain::identify() const {
     std::stringstream ss;
