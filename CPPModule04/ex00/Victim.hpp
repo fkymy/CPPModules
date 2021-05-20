@@ -13,10 +13,9 @@ public:
     const std::string& getName() const;
     virtual void getPolymorphed() const;
 
-private:
+protected:
     Victim();
     std::string name;
-    std::string title;
 };
 
 std::ostream& operator<<(std::ostream& stream, const Victim& victim);

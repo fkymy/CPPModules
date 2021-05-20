@@ -2,7 +2,7 @@
 #include "Sorcerer.hpp"
 #include "Victim.hpp"
 #include "Peon.hpp"
-#include "TestDerived.hpp"
+#include "Servant.hpp"
 
 int main()
 {
@@ -17,15 +17,15 @@ int main()
     robert.polymorph(joe);
 
 #ifdef TEST
-    TestDerived test1("test1");
-    TestDerived test2("test2");
-    std::cout << test1 << test2 << std::endl;
-    robert.polymorph(test1);
+    Servant s1("s1");
+    Servant s2("s2");
+    std::cout << s1 << s2 << std::endl;
+    robert.polymorph(s1);
 
-    Victim* test3 = new Peon("test3");
-    std::cout << *test3;
-    robert.polymorph(*test3);
-    delete test3;
+    Victim* victim = new Peon("p1");
+    std::cout << *victim;
+    robert.polymorph(*victim);
+    delete victim;
 #endif
 
     return 0;

@@ -1,13 +1,13 @@
 #include "Victim.hpp"
 
+Victim::Victim() {}
+
 Victim::Victim(const std::string& name) : name(name) {
     std::cout << "Some random victim called " << name << " just appeared!"
               << std::endl;
 }
 
-Victim::Victim(const Victim& other) {
-    *this = other;
-}
+Victim::Victim(const Victim& other) { *this = other; }
 
 Victim& Victim::operator=(const Victim& other) {
     if (this != &other) {
@@ -26,9 +26,7 @@ std::ostream& operator<<(std::ostream& stream, const Victim& victim) {
     return stream;
 }
 
-const std::string& Victim::getName() const {
-    return name;
-}
+const std::string& Victim::getName() const { return name; }
 
 void Victim::getPolymorphed() const {
     std::cout << name << " has been turned into a cute little sheep!"

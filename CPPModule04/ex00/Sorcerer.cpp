@@ -12,9 +12,7 @@ Sorcerer::~Sorcerer() {
               << ", is dead. Consequences will never be the same!" << std::endl;
 }
 
-Sorcerer::Sorcerer(const Sorcerer& other) {
-    *this = other;
-}
+Sorcerer::Sorcerer(const Sorcerer& other) { *this = other; }
 
 Sorcerer& Sorcerer::operator=(const Sorcerer& other) {
     if (this != &other) {
@@ -34,6 +32,6 @@ const std::string& Sorcerer::getName() const { return name; }
 
 const std::string& Sorcerer::getTitle() const { return title; }
 
-void Sorcerer::polymorph(const Victim &victim) const {
+void Sorcerer::polymorph(const Victim& victim) const {
     victim.getPolymorphed();
 }
