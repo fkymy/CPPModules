@@ -2,9 +2,7 @@
 
 PowerFist::PowerFist() : AWeapon("Power Fist", 8, 50) {}
 
-PowerFist::PowerFist(const PowerFist& other) : AWeapon() {
-    *this = other;
-}
+PowerFist::PowerFist(const PowerFist& other) : AWeapon(other) {}
 
 PowerFist& PowerFist::operator=(const PowerFist& other) {
     if (this != &other) {

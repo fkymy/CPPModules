@@ -2,9 +2,7 @@
 
 PlasmaRifle::PlasmaRifle() : AWeapon("Plasma Rifle", 5, 21) {}
 
-PlasmaRifle::PlasmaRifle(const PlasmaRifle& other) : AWeapon() {
-    *this = other;
-}
+PlasmaRifle::PlasmaRifle(const PlasmaRifle& other) : AWeapon(other) {}
 
 PlasmaRifle& PlasmaRifle::operator=(const PlasmaRifle& other) {
     if (this != &other) {

@@ -4,9 +4,7 @@ RadScorpion::RadScorpion() : Enemy(80, "RadScorpion") {
     std::cout <<  "* click click click *" << std::endl;
 }
 
-RadScorpion::RadScorpion(const RadScorpion& other) : Enemy() {
-    *this = other;
-}
+RadScorpion::RadScorpion(const RadScorpion& other) : Enemy(other) {}
 
 RadScorpion& RadScorpion::operator=(const RadScorpion &other) {
     if (this != &other) {

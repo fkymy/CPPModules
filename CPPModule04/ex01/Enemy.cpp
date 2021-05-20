@@ -4,9 +4,10 @@ Enemy::Enemy() {}
 
 Enemy::Enemy(int hp, std::string const& type) : hp(hp), type(type) {}
 
-Enemy::~Enemy() {}
-
-Enemy::Enemy(const Enemy& other) { *this = other; }
+Enemy::Enemy(const Enemy& other) {
+    type = other.type;
+    hp = other.hp;
+}
 
 Enemy& Enemy::operator=(const Enemy& other) {
     if (this != &other) {
@@ -15,6 +16,8 @@ Enemy& Enemy::operator=(const Enemy& other) {
     }
     return *this;
 }
+
+Enemy::~Enemy() {}
 
 void Enemy::takeDamage(int amount) {
     if (amount > 0) {

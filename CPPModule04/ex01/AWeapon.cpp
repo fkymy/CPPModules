@@ -6,7 +6,9 @@ AWeapon::AWeapon(std::string const& name, int apcost, int damage)
     : name(name), apcost(apcost), damage(damage) {}
 
 AWeapon::AWeapon(const AWeapon& other) {
-    *this = other;
+    name = other.name;
+    damage = other.damage;
+    apcost = other.apcost;
 }
 
 AWeapon& AWeapon::operator=(const AWeapon& other) {

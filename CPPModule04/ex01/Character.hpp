@@ -10,12 +10,12 @@
 class Character
 {
     private:
+        Character();
         std::string name;
         int ap;
         AWeapon* weapon;
 
     public:
-        Character();
         Character(std::string const & name);
         Character(const Character& other);
         Character& operator=(const Character& other);

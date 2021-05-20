@@ -5,7 +5,9 @@ Character::Character() {}
 Character::Character(std::string const& name) : name(name), ap(40), weapon(0) {}
 
 Character::Character(const Character& other) {
-    *this = other;
+    name = other.name;
+    ap = other.ap;
+    weapon = other.weapon;
 }
 
 Character& Character::operator=(const Character &other) {
@@ -36,7 +38,6 @@ void Character::attack(Enemy* enemy) {
     weapon->attack();
     enemy->takeDamage(weapon->getDamage());
     ap -= weapon->getAPCost();
-    if (ap < 0) ap = 0;
     if (enemy->getHP() <= 0) delete enemy;
 }
 
