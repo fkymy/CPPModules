@@ -4,8 +4,6 @@
 #include <string>
 #include "AMateria.hpp"
 
-class AMateria; // WHAT IS THIS
-
 class ICharacter
 {
     public:
