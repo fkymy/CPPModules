@@ -1,6 +1,6 @@
 #include "Squad.hpp"
 
-Squad::Squad() : count(0), marines(0) {}
+Squad::Squad() : count(0), marines(NULL) {}
 
 Squad::Squad(const Squad& other) {
     copyOther(other);
@@ -22,9 +22,12 @@ void Squad::copyOther(const Squad& other) {
 }
 
 void Squad::clear() {
-    for (int i = 0; i < count; ++i) delete marines[i];
-    delete[] marines;
-    count = 0;
+    if (marines) {
+        for (int i = 0; i < count; ++i) delete marines[i];
+        delete[] marines;
+        count = 0;
+        marines = NULL;
+    }
 }
 
 Squad::~Squad() {
@@ -37,14 +40,14 @@ int Squad::getCount() const {
 
 ISpaceMarine* Squad::getUnit(int N) const {
     if (count == 0 || N < 0 || N >= count)
-        return 0;
+        return NULL;
     return marines[N];
 }
 
 int Squad::push(ISpaceMarine* marine) {
     ISpaceMarine** tmp;
 
-    if (marine == 0)
+    if (marine == NULL)
         return count;
     for (int i = 0; i < count; ++i) {
         if (marines[i] == marine)

@@ -10,9 +10,10 @@ class Squad: public ISquad
 {
     public:
         Squad();
+        virtual ~Squad();
+
         Squad(const Squad& other);
         Squad& operator=(const Squad& other);
-        ~Squad();
 
         virtual int getCount() const;
         virtual ISpaceMarine* getUnit(int) const;
