@@ -10,9 +10,10 @@ class Alien : public Enemy
 {
     public:
         Alien();
+        virtual ~Alien();
+
         Alien(const Alien& other);
         Alien& operator=(const Alien& other);
-        virtual ~Alien();
 };
 
 #endif /* ALIEN_HPP */

@@ -35,24 +35,48 @@ int main()
     std::cout << *me;
 
 #ifdef TEST
-
-    Enemy *enemy = new Alien();
+    Character c("fuku");
+    PlasmaRifle rifle = PlasmaRifle();
     AWeapon *weapon = new Sword();
 
-    me->equip(weapon);
-    std::cout << *me;
+    Enemy *mutant = new SuperMutant();
 
-    me->attack(NULL);
+    c.equip(&rifle);
+    std::cout << c;
 
-    me->equip(NULL);
+    std::cout << "TEST DAMEGE" << std::endl;
 
-    me->attack(enemy);
+    std::cout << "weapon damage: " << rifle.getDamage() << std::endl;
+    std::cout << "enemy hp: " << mutant->getHP() << std::endl;
+    c.attack(mutant);
+    std::cout << "enemy hp: " << mutant->getHP() << std::endl;
 
-    me->equip(weapon);
-    me->attack(enemy);
+    c.equip(weapon);
+    std::cout << c;
+    std::cout << "weapon damage: " << weapon->getDamage() << std::endl;
+    std::cout << "enemy hp: " << mutant->getHP() << std::endl;
+    c.attack(mutant);
+    std::cout << "enemy hp: " << mutant->getHP() << std::endl;
 
-    std::cout << *me << *me;
+    std::cout << "TEST AP" << std::endl;
 
+    c.attack(mutant);
+    std::cout << c;
+    c.attack(mutant);
+    std::cout << c;
+    c.attack(mutant);
+    std::cout << c;
+    c.attack(mutant);
+    std::cout << c;
+    c.attack(mutant);
+    std::cout << c;
+
+    std::cout << "TEST RECOVERY" << std::endl;
+    c.recoverAP();
+    std::cout << c;
+    c.recoverAP();
+    std::cout << c;
+    c.recoverAP();
 #endif
 
     return 0;

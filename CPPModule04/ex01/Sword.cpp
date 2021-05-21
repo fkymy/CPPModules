@@ -2,6 +2,8 @@
 
 Sword::Sword() : AWeapon("Sword", 1, 30) {}
 
+Sword::~Sword() {};
+
 Sword::Sword(const Sword& other) : AWeapon(other) {}
 
 Sword& Sword::operator=(const Sword& other) {
@@ -10,8 +12,6 @@ Sword& Sword::operator=(const Sword& other) {
     }
     return *this;
 }
-
-Sword::~Sword() {};
 
 void Sword::attack() const {
     std::cout << "* Slash! *" << std::endl;

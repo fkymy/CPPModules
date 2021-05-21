@@ -9,9 +9,10 @@ class PlasmaRifle : public AWeapon
 {
     public:
         PlasmaRifle();
+        virtual ~PlasmaRifle();
+
         PlasmaRifle(const PlasmaRifle& other);
         PlasmaRifle& operator=(const PlasmaRifle& other);
-        virtual ~PlasmaRifle();
 
         virtual void attack() const;
 };

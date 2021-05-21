@@ -20,7 +20,6 @@ class Character
         Character(const Character& other);
         Character& operator=(const Character& other);
         ~Character();
-
         void recoverAP();
         void equip(AWeapon*);
         void attack(Enemy*);

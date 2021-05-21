@@ -2,7 +2,7 @@
 
 Character::Character() {}
 
-Character::Character(std::string const& name) : name(name), ap(40), weapon(0) {}
+Character::Character(std::string const& name) : name(name), ap(40), weapon(NULL) {}
 
 Character::Character(const Character& other) {
     name = other.name;
@@ -26,8 +26,8 @@ void Character::recoverAP() {
     if (ap > 40) ap = 40;
 }
 
-void Character::equip(AWeapon* newWeapon) {
-    weapon = newWeapon;
+void Character::equip(AWeapon* weapon) {
+    this->weapon = weapon;
 }
 
 void Character::attack(Enemy* enemy) {

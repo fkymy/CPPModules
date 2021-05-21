@@ -8,9 +8,10 @@ class Sword: public AWeapon
 {
     public:
         Sword();
+        virtual ~Sword();
+
         Sword(const Sword& other);
         Sword& operator=(const Sword& other);
-        virtual ~Sword();
 
         virtual void attack() const;
 };
