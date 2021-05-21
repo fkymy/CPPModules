@@ -20,12 +20,12 @@ Fixed& Fixed::operator=(const Fixed& other) {
     return *this;
 }
 
-int Fixed::getRawBits() const {
+int Fixed::getRawBits( void ) const {
     std::cout << "getRawBits member function called" << std::endl;
     return raw;
 }
 
-void Fixed::setRawBits(const int raw) {
+void Fixed::setRawBits( int const raw ) {
     std::cout << "setRawBits member function call" << std::endl;
     this->raw = raw;
 }

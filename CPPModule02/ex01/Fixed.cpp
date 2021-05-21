@@ -15,15 +15,14 @@ Fixed::Fixed(const float num) {
     raw = (int)roundf(num * (1 << b));
 }
 
-Fixed::Fixed(const Fixed& other) {
-    std::cout << "Copy constructor called" << std::endl;
-    *this = other;
-}
-
 Fixed::~Fixed() {
     std::cout << "Destructor called" << std::endl;
 }
 
+Fixed::Fixed(const Fixed& other) {
+    std::cout << "Copy constructor called" << std::endl;
+    *this = other;
+}
 
 Fixed& Fixed::operator=(const Fixed& other) {
     std::cout << "Assignation operator called" << std::endl;
@@ -32,19 +31,19 @@ Fixed& Fixed::operator=(const Fixed& other) {
     return *this;
 }
 
-int Fixed::getRawBits() const {
+int Fixed::getRawBits( void ) const {
     return raw;
 }
 
-void Fixed::setRawBits(const int raw) {
+void Fixed::setRawBits( int const raw) {
     this->raw = raw;
 }
 
-int Fixed::toInt() const {
+int Fixed::toInt( void ) const {
     return raw >> b;
 }
 
-float Fixed::toFloat() const {
+float Fixed::toFloat( void ) const {
     return (float)raw / (float)(1 << b);
 }
 

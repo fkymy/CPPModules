@@ -13,17 +13,17 @@ public:
     Fixed(const Fixed& other);
     Fixed& operator=(const Fixed& other);
 
-    int getRawBits() const;
-    void setRawBits(int const raw);
+    int getRawBits( void ) const;
+    void setRawBits( int const raw );
 
-    float toFloat() const;
-    int toInt() const;
+    float toFloat( void ) const;
+    int toInt( void ) const;
 
 private:
     int raw;
     static const int b = 8;
 };
 
-std::ostream& operator<<(std::ostream& stream, const Fixed& f);
+std::ostream& operator<<(std::ostream& stream, const Fixed& fixed);
 
 #endif /* FIXED_HPP */
