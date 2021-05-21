@@ -7,18 +7,22 @@ Victim::Victim(const std::string& name) : name(name) {
               << std::endl;
 }
 
-Victim::Victim(const Victim& other) { *this = other; }
+Victim::~Victim() {
+    std::cout << "Victim " << name << " just died for no apparent reason!"
+              << std::endl;
+}
+
+Victim::Victim(const Victim& other) {
+    name = other.name;
+    std::cout << "Some random victim called " << name << " just appeared!"
+              << std::endl;
+}
 
 Victim& Victim::operator=(const Victim& other) {
     if (this != &other) {
         name = other.name;
     }
     return *this;
-}
-
-Victim::~Victim() {
-    std::cout << "Victim " << name << " just died for no apparent reason!"
-              << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& stream, const Victim& victim) {

@@ -8,13 +8,13 @@
 class Sorcerer {
 public:
     Sorcerer(const std::string& name, const std::string& title);
+    ~Sorcerer();
+
     Sorcerer(const Sorcerer& other);
     Sorcerer& operator=(const Sorcerer& other);
-    ~Sorcerer();
 
     const std::string& getName() const;
     const std::string& getTitle() const;
-
     void polymorph(const Victim& victim) const;
 
 private:

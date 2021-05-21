@@ -8,14 +8,17 @@
 class Peon : public Victim {
 public:
     Peon(const std::string& name);
+    ~Peon();
+
     Peon(const Peon& other);
     Peon& operator=(const Peon& other);
-    ~Peon();
 
     virtual void getPolymorphed() const;
 
 private:
     Peon();
 };
+
+std::ostream& operator<<(std::ostream& stream, const Peon& peon);
 
 #endif /* PEON_HPP */
