@@ -6,7 +6,7 @@
 #include <string>
 #include "ClapTrap.hpp"
 
-class FragTrap: public ClapTrap {
+class FragTrap: public virtual ClapTrap {
 public:
     FragTrap();
     explicit FragTrap(const std::string& name);

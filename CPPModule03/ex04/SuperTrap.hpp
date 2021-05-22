@@ -10,12 +10,13 @@ class SuperTrap: public FragTrap, public NinjaTrap {
 public:
     SuperTrap();
     SuperTrap(const std::string& name);
-    SuperTrap(const SuperTrap& other);
-    SuperTrap& operator=(const SuperTrap& other);
     ~SuperTrap();
 
-    virtual void rangedAttack(const std::string& target);
-    virtual void meleeAttack(const std::string& target);
+    SuperTrap(const SuperTrap& other);
+    SuperTrap& operator=(const SuperTrap& other);
+
+    virtual void rangedAttack(std::string const & target) const;
+    virtual void meleeAttack(std::string const & target) const;
 };
 
 #endif /* SUPERTRAP_HPP */
