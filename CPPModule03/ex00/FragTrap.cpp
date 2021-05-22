@@ -1,7 +1,8 @@
 #include "FragTrap.hpp"
 
 FragTrap::FragTrap()
-    : hitPoints(100),
+    : name("default"),
+      hitPoints(100),
       maxHitPoints(100),
       energyPoints(100),
       maxEnergyPoints(100),
@@ -9,7 +10,7 @@ FragTrap::FragTrap()
       meleeAttackDamage(30),
       rangedAttackDamage(20),
       armorDamageReduction(5) {
-    std::cout << "FR4G-TP Default constructor called" << std::endl;
+    std::cout << "FR4G-TP default constructor: Hey, best friend!" << std::endl;
 }
 
 FragTrap::FragTrap(const std::string& name)
@@ -22,16 +23,30 @@ FragTrap::FragTrap(const std::string& name)
       meleeAttackDamage(30),
       rangedAttackDamage(20),
       armorDamageReduction(5) {
-    std::cout << "FR4G-TP Constructor called" << std::endl;
+    std::cout << "FR4G-TP constructor: Hey, best friend!" << std::endl;
+}
+
+FragTrap::~FragTrap() {
+    std::cout << "FR4G-TP Yessss, look into my eyes. You're getting sleepy. "
+                 "You're getting... zzzzzz... Zzzzzz..."
+              << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap& other) {
-    std::cout << "FR4G-TP Copy constructor called" << std::endl;
-    *this = other;
+    std::cout << "FR4G-TP copy constructor: Hey, best friend!" << std::endl;
+    hitPoints = other.hitPoints;
+    maxHitPoints = other.maxHitPoints;
+    energyPoints = other.energyPoints;
+    maxEnergyPoints = other.maxEnergyPoints;
+    level = other.level;
+    name = other.name;
+    meleeAttackDamage = other.meleeAttackDamage;
+    rangedAttackDamage = other.rangedAttackDamage;
+    armorDamageReduction = other.armorDamageReduction;
 }
 
 FragTrap& FragTrap::operator=(const FragTrap& other) {
-    std::cout << "FR4G-TP Assignment operator called" << std::endl;
+    std::cout << "FR4G-TP assignment operator: Hey, best friend!" << std::endl;
     if (this != &other) {
         hitPoints = other.hitPoints;
         maxHitPoints = other.maxHitPoints;
@@ -45,8 +60,6 @@ FragTrap& FragTrap::operator=(const FragTrap& other) {
     }
     return *this;
 }
-
-FragTrap::~FragTrap() { std::cout << "FR4G-TP Destructor called" << std::endl; }
 
 void FragTrap::rangedAttack(std::string const& target) const {
     std::cout << "FR4G-TP " << name << " attacks " << target
@@ -72,8 +85,8 @@ void FragTrap::takeDamage(unsigned int amount) {
         hitPoints -= amount;
     }
 
-    std::cout << "FR4G-TP " << name << " takes " << amount << " damage. " << hitPoints
-              << "HP left." << std::endl;
+    std::cout << "FR4G-TP " << name << " takes " << amount << " damage. "
+              << hitPoints << "HP left." << std::endl;
 }
 void FragTrap::beRepaired(unsigned int amount) {
     if (hitPoints + amount > maxHitPoints) {
@@ -82,19 +95,26 @@ void FragTrap::beRepaired(unsigned int amount) {
         hitPoints += amount;
     }
 
+    if (energyPoints + amount > maxEnergyPoints) {
+        energyPoints = maxEnergyPoints;
+    } else {
+        energyPoints += amount;
+    }
+
     std::cout << "FR4G-TP " << name << " is being repaired. " << hitPoints
-              << "HP left." << std::endl;
+              << "HP left and " << energyPoints << "energy left." << std::endl;
 }
 
 void FragTrap::vaulthunter_dot_exe(std::string const& target) {
+    const std::string attacks[] = {"Nade out!", "Hot potato!",
+                                   "Take a chill pill!", "Eat bomb!",
+                                   "Freezy peezy!"};
+
     if (energyPoints < 25) {
         std::cout << "FR4G-TP " << name << " has not enough energy left. "
                   << std::endl;
         return;
     }
-
-    const std::string attacks[5] = {"attack1", "attack2", "attack3", "attack4",
-                                    "attack5"};
 
     energyPoints -= 25;
 

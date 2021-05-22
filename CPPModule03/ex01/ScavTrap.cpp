@@ -1,7 +1,8 @@
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap()
-    : hitPoints(100),
+    : name("default scav"),
+      hitPoints(100),
       maxHitPoints(100),
       energyPoints(50),
       maxEnergyPoints(50),
@@ -9,7 +10,9 @@ ScavTrap::ScavTrap()
       meleeAttackDamage(20),
       rangedAttackDamage(15),
       armorDamageReduction(3) {
-    std::cout << "SC4V-TP Default constructor called" << std::endl;
+    std::cout << "SC4V-TP default constructor: I'm not to let ANYONE in "
+                 "through here! "
+              << std::endl;
 }
 
 ScavTrap::ScavTrap(const std::string& name)
@@ -22,23 +25,34 @@ ScavTrap::ScavTrap(const std::string& name)
       meleeAttackDamage(20),
       rangedAttackDamage(15),
       armorDamageReduction(3) {
-    std::cout << "SC4V-TP Constructor called" << std::endl;
+    std::cout << "SC4V-TP constructor: I'm not to let ANYONE in through here! "
+              << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& other) {
-    std::cout << "SC4V-TP Copy constructor called" << std::endl;
-    *this = other;
+    std::cout
+        << "SC4V-TP copy constructor: I'm not to let ANYONE in through here! "
+        << std::endl;
+    name = other.name;
+    hitPoints = other.hitPoints;
+    maxHitPoints = other.maxHitPoints;
+    energyPoints = other.energyPoints;
+    maxEnergyPoints = other.maxEnergyPoints;
+    level = other.level;
+    meleeAttackDamage = other.meleeAttackDamage;
+    rangedAttackDamage = other.rangedAttackDamage;
+    armorDamageReduction = other.armorDamageReduction;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
     std::cout << "SC4V-TP Assignment operator called" << std::endl;
     if (this != &other) {
+        name = other.name;
         hitPoints = other.hitPoints;
         maxHitPoints = other.maxHitPoints;
         energyPoints = other.energyPoints;
         maxEnergyPoints = other.maxEnergyPoints;
         level = other.level;
-        name = other.name;
         meleeAttackDamage = other.meleeAttackDamage;
         rangedAttackDamage = other.rangedAttackDamage;
         armorDamageReduction = other.armorDamageReduction;
@@ -46,7 +60,7 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
     return *this;
 }
 
-ScavTrap::~ScavTrap() { std::cout << "SC4V-TP Destructor called" << std::endl; }
+ScavTrap::~ScavTrap() { std::cout << "SC4V-TP: bye bye" << std::endl; }
 
 void ScavTrap::rangedAttack(std::string const& target) const {
     std::cout << "SC4V-TP " << name << " attacks " << target
@@ -82,23 +96,29 @@ void ScavTrap::beRepaired(unsigned int amount) {
         hitPoints += amount;
     }
 
+    if (energyPoints + amount > maxEnergyPoints) {
+        energyPoints = maxEnergyPoints;
+    } else {
+        energyPoints += amount;
+    }
+
     std::cout << "SC4V-TP " << name << " is being repaired. " << hitPoints
-              << "HP left." << std::endl;
+              << "HP left and " << energyPoints << "energy left." << std::endl;
 }
 
-void ScavTrap::challengeNewcomer(std::string const & target) {
+void ScavTrap::challengeNewcomer(std::string const& target) {
+    const std::string challenges[5] = {"Death from Above", "Eagle Eye",
+                                       "Roger Slamjet", "Slampage!",
+                                       "Dragon Punch"};
+
     if (energyPoints < 25) {
         std::cout << "SC4V-TP " << name << " has not enough energy left. "
                   << std::endl;
         return;
     }
 
-    const std::string challenges[5] = {"challenge1", "challenge2", "challenge3", "challenge4",
-                                    "challenge5"};
-
     energyPoints -= 25;
 
     std::cout << "FR4G-TP " << name << " challenges " << target << " with "
-              << challenges[rand() % 5] << ", causing " << rand() % 10
-              << " points of damage!" << std::endl;
+              << challenges[rand() % 5] << std::endl;
 }

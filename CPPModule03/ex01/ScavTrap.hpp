@@ -6,20 +6,6 @@
 #include <string>
 
 class ScavTrap {
-public:
-    ScavTrap();
-    explicit ScavTrap(const std::string& name);
-    ScavTrap(const ScavTrap& other);
-    ScavTrap& operator=(const ScavTrap& other);
-    ~ScavTrap();
-
-    void rangedAttack(std::string const & target) const;
-    void meleeAttack(std::string const & target) const;
-    void takeDamage(unsigned int amount);
-    void beRepaired(unsigned int amount);
-
-    void challengeNewcomer(std::string const & target);
-
 private:
     std::string name;
     unsigned int hitPoints;
@@ -31,6 +17,19 @@ private:
     unsigned int rangedAttackDamage;
     unsigned int armorDamageReduction;
 
+public:
+    ScavTrap();
+    explicit ScavTrap(const std::string& name);
+    ~ScavTrap();
+
+    ScavTrap(const ScavTrap& other);
+    ScavTrap& operator=(const ScavTrap& other);
+
+    void rangedAttack(std::string const & target) const;
+    void meleeAttack(std::string const & target) const;
+    void takeDamage(unsigned int amount);
+    void beRepaired(unsigned int amount);
+    void challengeNewcomer(std::string const & target);
 };
 
 #endif /* SCAVTRAP_HPP */
