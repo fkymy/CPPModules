@@ -63,6 +63,13 @@ int main()
 
         s1->push(m1);
         s1->push(m2);
+
+        for (int i = 0; i < s1->getCount(); ++i) {
+            ISpaceMarine* cur = s1->getUnit(i);
+            cur->battleCry();
+            cur->rangedAttack();
+            cur->meleeAttack();
+        }
         delete s1;
     }
 #endif

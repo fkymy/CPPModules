@@ -6,10 +6,11 @@
 class AWeapon
 {
     protected:
-        AWeapon();
         std::string name;
         int apcost;
         int damage;
+
+        AWeapon();
 
     public:
         AWeapon(std::string const & name, int apcost, int damage);

@@ -8,7 +8,7 @@
 class Servant: public Victim {
 public:
     Servant(const std::string& name);
-    ~Servant();
+    virtual ~Servant();
 
     Servant(const Servant& other);
     Servant& operator=(const Servant& other);

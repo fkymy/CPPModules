@@ -10,10 +10,11 @@
 class Character
 {
     private:
-        Character();
         std::string name;
         int ap;
         AWeapon* weapon;
+
+        Character();
 
     public:
         Character(std::string const & name);

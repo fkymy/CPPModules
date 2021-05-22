@@ -32,6 +32,8 @@ int main()
 
 #ifdef TEST
 
+    std::cout << "TEST" << std::endl;
+
 	{
 		IMateriaSource *source = new MateriaSource();
 		source->learnMateria(new Ice());
