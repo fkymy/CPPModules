@@ -1,7 +1,8 @@
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap()
-    : hitPoints(100),
+    : name("default"),
+      hitPoints(100),
       maxHitPoints(100),
       energyPoints(100),
       maxEnergyPoints(100),
@@ -28,7 +29,16 @@ ClapTrap::ClapTrap(const std::string& model, const std::string& name)
 
 ClapTrap::ClapTrap(const ClapTrap& other) {
     std::cout << "ClapTrap Copy constructor called" << std::endl;
-    *this = other;
+    model = other.model;
+    name = other.name;
+    hitPoints = other.hitPoints;
+    maxHitPoints = other.maxHitPoints;
+    energyPoints = other.energyPoints;
+    maxEnergyPoints = other.maxEnergyPoints;
+    level = other.level;
+    meleeAttackDamage = other.meleeAttackDamage;
+    rangedAttackDamage = other.rangedAttackDamage;
+    armorDamageReduction = other.armorDamageReduction;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
@@ -88,6 +98,12 @@ void ClapTrap::beRepaired(unsigned int amount) {
         hitPoints += amount;
     }
 
+    if (maxEnergyPoints + amount > maxEnergyPoints) {
+        energyPoints = maxEnergyPoints;
+    } else {
+        energyPoints += amount;
+    }
+
     std::cout << model << " " << name << " is being repaired. " << hitPoints
-              << "HP left." << std::endl;
+              << "HP left and " << energyPoints << "energy left." << std::endl;
 }

@@ -10,14 +10,15 @@ class NinjaTrap: public ClapTrap {
 public:
     NinjaTrap();
     NinjaTrap(const std::string& name);
-    NinjaTrap(const NinjaTrap& other);
-    NinjaTrap& operator=(const NinjaTrap& other);
     ~NinjaTrap();
 
-    void ninjaShoebox(FragTrap& trap);
-    void ninjaShoebox(ScavTrap& trap);
-    void ninjaShoebox(NinjaTrap& trap);
+    NinjaTrap(const NinjaTrap& other);
+    NinjaTrap& operator=(const NinjaTrap& other);
 
+    void ninjaShoebox(const ClapTrap& trap) const;
+    void ninjaShoebox(const FragTrap& trap) const;
+    void ninjaShoebox(const ScavTrap& trap) const;
+    void ninjaShoebox(const NinjaTrap& trap) const;
 };
 
 #endif /* NINJATRAP_HPP */

@@ -10,9 +10,10 @@ class FragTrap: public ClapTrap {
 public:
     FragTrap();
     explicit FragTrap(const std::string& name);
+    ~FragTrap();
+
     FragTrap(const FragTrap& other);
     FragTrap& operator=(const FragTrap& other);
-    ~FragTrap();
 
     void vaulthunter_dot_exe(std::string const & target);
 };

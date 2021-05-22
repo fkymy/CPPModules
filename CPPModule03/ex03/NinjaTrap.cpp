@@ -38,17 +38,22 @@ NinjaTrap& NinjaTrap::operator=(const NinjaTrap& other) {
 
 NinjaTrap::~NinjaTrap() { std::cout << "NinjaTrap Destructor called" << std::endl; }
 
-void NinjaTrap::ninjaShoebox(FragTrap& trap) {
+void NinjaTrap::ninjaShoebox(const ClapTrap& trap) const {
+    (void)trap;
+    std::cout << model << " " << name << " attacks ClapTrap with ninja shoebox" << std::endl;
+}
+
+void NinjaTrap::ninjaShoebox(const FragTrap& trap) const {
     (void)trap;
     std::cout << model << " " << name << " attacks FragTrap with ninja shoebox" << std::endl;
 }
 
-void NinjaTrap::ninjaShoebox(NinjaTrap& trap) {
+void NinjaTrap::ninjaShoebox(const NinjaTrap& trap) const {
     (void)trap;
     std::cout << model << " " << name << " attacks NinjaTrap with ninja shoebox" << std::endl;
 }
 
-void NinjaTrap::ninjaShoebox(ScavTrap& trap) {
+void NinjaTrap::ninjaShoebox(const ScavTrap& trap) const {
     (void)trap;
     std::cout << model << " " << name  << " attacks ScavTrap with ninja shoebox" << std::endl;
 
