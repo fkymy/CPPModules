@@ -1,10 +1,10 @@
-# updated Sat May 22 03:03:52 JST 2021
+# updated Sun May 23 14:28:53 JST 2021
 
-SRC := main.cpp
+SRC := Converter.cpp main.cpp test.cpp
 
-OBJ := main.o
+OBJ := Converter.o main.o test.o
 
-HDR :=
+HDR := Converter.hpp
 
 # DO NOT ADD OR MODIFY ANY LINES ABOVE THIS -- run 'make source' to add files
 
