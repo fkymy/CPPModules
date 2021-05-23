@@ -6,6 +6,7 @@
 #include <cmath>
 #include <iomanip>
 #include <iostream>
+#include <cstdlib>
 
 class Converter {
 private:
@@ -14,6 +15,8 @@ private:
     int error;
 
     Converter();
+    std::string trim(const std::string& str,
+                     const std::string& whitespaces = " \t");
 
 public:
     Converter(const std::string& input);

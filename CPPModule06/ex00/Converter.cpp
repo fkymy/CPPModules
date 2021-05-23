@@ -12,17 +12,39 @@ const char* Converter::NonDisplayableException::what() const throw() {
     return "Non displayable";
 }
 
-Converter::Converter(const std::string& input) : input(input) {
-    error = 0;
+std::string Converter::trim(const std::string& str,
+                            const std::string& whitespace) {
+    const size_t begin = str.find_first_not_of(whitespace);
+    if (begin == std::string::npos) return "";
 
-    value = atof(input.c_str());
-    if (value == 0) {
-        if (input.length() == 1 && !std::isdigit(input[0]))
-            value = static_cast<double>(input[0]);
-        // TODO: other errors?
-        // - HUGE VAL?
-        // - not digit?
+    const size_t end = str.find_last_not_of(whitespace);
+    const size_t range = end - begin + 1;
+
+    return str.substr(begin, range);
+}
+
+Converter::Converter(const std::string& input)
+    : input(input), value(0), error(0) {
+    std::string trimmed = trim(input);
+    if (trimmed.length() == 0) {
+        error = 1;
+        return;
     }
+
+    const char* pStart = trimmed.c_str();
+    char* pEnd;
+
+    value = std::strtod(pStart, &pEnd);
+
+    if (pEnd[0] != '\0') {
+        std::cout << *pEnd << std::endl;
+        if (value == 0 && strlen(pEnd) == 1)
+            value = static_cast<double>(pEnd[0]);
+        else if (!(pEnd[0] == 'f' && pEnd[1] == '\0'))
+            error = 1;
+    }
+
+    if (value == HUGE_VAL) error = 1;
 }
 
 Converter::Converter(const Converter& other) {
@@ -45,6 +67,7 @@ Converter::~Converter() {}
 void Converter::printChar() const {
     std::cout << "char: ";
     try {
+        if (error) throw ImpossibleException();
         if (isnan(value) || value < CHAR_MIN || value > CHAR_MAX)
             throw ImpossibleException();
         char c = static_cast<char>(value);
@@ -58,6 +81,7 @@ void Converter::printChar() const {
 void Converter::printInt() const {
     std::cout << "int: ";
     try {
+        if (error) throw ImpossibleException();
         if (isnan(value) || value < INT_MIN || value > INT_MAX)
             throw ImpossibleException();
         std::cout << static_cast<int>(value) << std::endl;
@@ -69,6 +93,7 @@ void Converter::printInt() const {
 void Converter::printFloat() const {
     std::cout << "float: ";
     try {
+        if (error) throw ImpossibleException();
         float f = static_cast<float>(value);
         if (!isinf(f) && !isnan(f) && (value < -FLT_MAX || value > FLT_MAX))
             throw ImpossibleException();
@@ -86,12 +111,14 @@ void Converter::printFloat() const {
 
 void Converter::printDouble() const {
     std::cout << "double: ";
-    std::cout << static_cast<double>(value);
-
-    if (value == static_cast<int>(value)) {
-        std::cout << ".0";
+    try {
+        if (error) throw ImpossibleException();
+        std::cout << static_cast<double>(value);
+        if (value == static_cast<int>(value)) {
+            std::cout << ".0";
+        }
+        std::cout << std::endl;
+    } catch (const std::exception& e) {
+        std::cout << e.what() << std::endl;
     }
-
-    std::cout << std::endl;
 }
-

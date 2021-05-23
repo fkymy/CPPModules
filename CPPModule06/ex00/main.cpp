@@ -8,8 +8,6 @@ int main(int argc, char* argv[]) {
     }
 
     Converter converter(argv[1]);
-    // TODO: Remove this
-    std::cout << "===== Converting string: " << argv[1] << std::endl;
     converter.printChar();
     converter.printInt();
     converter.printFloat();

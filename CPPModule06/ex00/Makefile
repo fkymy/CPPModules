@@ -1,8 +1,8 @@
 # updated Sun May 23 14:28:53 JST 2021
 
-SRC := Converter.cpp main.cpp test.cpp
+SRC := Converter.cpp main.cpp
 
-OBJ := Converter.o main.o test.o
+OBJ := Converter.o main.o
 
 HDR := Converter.hpp
 

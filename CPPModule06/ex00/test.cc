@@ -3,6 +3,13 @@
 using namespace std;
 
 int main() {
+
+    // Quick Test
+    cout << static_cast<int>(atof("  42 ")) << endl;
+    cout << static_cast<int>(atof("-0")) << endl;
+    cout << static_cast<float>(2147483648) << endl;
+    return 0;
+
     float fInfinity = 1.0f / 0.0f;
     double dInfinity = 1.0 / 0.0;
 
@@ -20,6 +27,7 @@ int main() {
     cout << 10000.1 << endl;
     cout << 1.23456789 << endl;
     cout << 12345678.9 << endl;
+
     cout << fInfinity << endl;
     cout << dInfinity << endl;
     cout << fMinusInfinity << endl;
