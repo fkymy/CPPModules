@@ -43,6 +43,15 @@ int main() {
     }
     try
     {
+        Bureaucrat tooHigh("tooHigh", -42);
+        std::cout << tooHigh << std::endl;
+    }
+    catch (std::exception & e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    try
+    {
         Bureaucrat tooLow("tooLow", 151);
         std::cout << tooLow << std::endl;
     }
@@ -53,6 +62,7 @@ int main() {
     try
     {
         Bureaucrat highest("highest", 1);
+        std::cout << highest << std::endl;
         highest.incrementGrade();
         std::cout << highest << std::endl;
     }
@@ -63,6 +73,7 @@ int main() {
     try
     {
         Bureaucrat lowest("lowest", 150);
+        std::cout << lowest << std::endl;
         lowest.decrementGrade();
         std::cout << lowest << std::endl;
     }
