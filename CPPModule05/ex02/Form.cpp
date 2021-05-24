@@ -1,9 +1,12 @@
 #include "Form.hpp"
 
-Form::Form(const std::string& name, int gradeToSign, int gradeToExec)
-    : name(name), gradeToSign(gradeToSign), gradeToExec(gradeToExec) {
-    isSigned = false;
-    target = "";
+Form::Form(const std::string& name, int gradeToSign, int gradeToExec,
+           const std::string& target)
+    : name(name),
+      isSigned(false),
+      gradeToSign(gradeToSign),
+      gradeToExec(gradeToExec),
+      target(target) {
     if (gradeToSign < 1) throw Form::GradeTooHighException();
     if (gradeToSign > 150) throw Form::GradeTooLowException();
     if (gradeToExec < 1) throw Form::GradeTooHighException();
@@ -30,19 +33,18 @@ Form::~Form() {}
 
 const std::string& Form::getName() const { return name; }
 
+bool Form::getIsSigned() const { return isSigned; }
+
 int Form::getGradeToSign() const { return gradeToSign; }
 
 int Form::getGradeToExec() const { return gradeToExec; }
 
-bool Form::getIsSigned() const { return isSigned; }
-
 const std::string& Form::getTarget() const { return target; }
 
 void Form::beSigned(const Bureaucrat& b) {
-    if (b.getGrade() <= gradeToSign)
-        isSigned = true;
-    else
+    if (b.getGrade() > gradeToSign)
         throw Form::GradeTooLowException();
+    isSigned = true;
 }
 
 void Form::execute(const Bureaucrat& b) const {
@@ -80,8 +82,9 @@ const char* Form::NotSignedException::what() const throw() {
 }
 
 std::ostream& operator<<(std::ostream& os, const Form& f) {
-    os << "form <name: " << f.getName() << ", isSigned: " << f.getIsSigned()
+    os << "Form <name: " << f.getName() << ", isSigned: " << f.getIsSigned()
        << ", gradeToSign: " << f.getGradeToSign()
-       << ", gradeToExec: " << f.getGradeToExec() << ">" << std::endl;
+       << ", gradeToExec: " << f.getGradeToExec()
+       << ", target: " << f.getTarget() << ">" << std::endl;
     return os;
 }

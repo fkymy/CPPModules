@@ -8,15 +8,16 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-class RobotomyRequestForm : public Form {
+class RobotomyRequestForm : public Form
+{
 private:
     RobotomyRequestForm();
 
 public:
     RobotomyRequestForm(const std::string& target);
+    virtual ~RobotomyRequestForm();
     RobotomyRequestForm(const RobotomyRequestForm& other);
     RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
-    virtual ~RobotomyRequestForm();
 
     virtual void execute(const Bureaucrat& b) const;
 };

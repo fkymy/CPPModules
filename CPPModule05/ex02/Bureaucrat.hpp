@@ -17,7 +17,6 @@ private:
 public:
     Bureaucrat(const std::string& name, int grade);
     virtual ~Bureaucrat();
-
     Bureaucrat(const Bureaucrat& other);
     Bureaucrat& operator=(const Bureaucrat& other);
 

@@ -1,9 +1,7 @@
 #include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string& target)
-    : Form("Presidential Pardon Form", 25, 5) {
-    this->target = target;
-}
+    : Form("Presidential Pardon Form", 25, 5, target) {}
 
 PresidentialPardonForm::PresidentialPardonForm(
     const PresidentialPardonForm& other)
@@ -21,6 +19,6 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(
 
 void PresidentialPardonForm::execute(const Bureaucrat& b) const {
     Form::execute(b);
-    std::cout << target << " has been pardoned by  Zafod Beeblebrox"
+    std::cout << getTarget() << " has been pardoned by  Zafod Beeblebrox"
               << std::endl;
 }

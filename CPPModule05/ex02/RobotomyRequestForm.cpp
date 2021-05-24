@@ -1,9 +1,7 @@
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
-    : Form("Robotomy Request Form", 72, 45) {
-    this->target = target;
-}
+    : Form("Robotomy Request Form", 72, 45, target) {}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other)
     : Form(other) {}
@@ -21,12 +19,10 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(
 void RobotomyRequestForm::execute(const Bureaucrat& b) const {
     Form::execute(b);
 
-    srand(time(NULL));
-
     std::cout << "guri guri guri" << std::endl;
     if (rand() % 2)
-        std::cout << target << " has been robotomized successfully"
+        std::cout << getTarget() << " has been robotomized successfully"
                   << std::endl;
     else
-        std::cout << target << " robotomization failed" << std::endl;
+        std::cout << getTarget() << " robotomization failed" << std::endl;
 }
