@@ -1,8 +1,7 @@
 #include "Form.hpp"
 
 Form::Form(const std::string& name, int gradeToSign, int gradeToExec)
-    : name(name), gradeToSign(gradeToSign), gradeToExec(gradeToExec) {
-    isSigned = false;
+    : name(name), isSigned(false), gradeToSign(gradeToSign), gradeToExec(gradeToExec) {
     if (gradeToSign < 1) throw Form::GradeTooHighException();
     if (gradeToSign > 150) throw Form::GradeTooLowException();
     if (gradeToExec < 1) throw Form::GradeTooHighException();
@@ -11,10 +10,9 @@ Form::Form(const std::string& name, int gradeToSign, int gradeToExec)
 
 Form::Form(const Form& other)
     : name(other.name),
+      isSigned(other.isSigned),
       gradeToSign(other.gradeToSign),
-      gradeToExec(other.gradeToExec) {
-    isSigned = other.isSigned;
-}
+      gradeToExec(other.gradeToExec) {}
 
 Form& Form::operator=(const Form& other) {
     if (this != &other) isSigned = other.isSigned;
@@ -24,19 +22,18 @@ Form& Form::operator=(const Form& other) {
 Form::~Form() {}
 
 void Form::beSigned(const Bureaucrat& b) {
-    if (b.getGrade() <= gradeToSign)
-        isSigned = true;
-    else
+    if (b.getGrade() > gradeToSign)
         throw Form::GradeTooLowException();
+    isSigned = true;
 }
 
 const std::string& Form::getName() const { return name; }
 
+bool Form::getIsSigned() const { return isSigned; }
+
 int Form::getGradeToSign() const { return gradeToSign; }
 
 int Form::getGradeToExec() const { return gradeToExec; }
-
-bool Form::getIsSigned() const { return isSigned; }
 
 Form::GradeTooHighException::GradeTooHighException()
     : msg("Error: Form: Grade too high") {}
@@ -57,7 +54,7 @@ const char* Form::GradeTooLowException::what() const throw() {
 }
 
 std::ostream& operator<<(std::ostream& os, const Form& f) {
-    os << "form <name: " << f.getName() << ", isSigned: " << f.getIsSigned()
+    os << "Form <name: " << f.getName() << ", isSigned: " << f.getIsSigned()
        << ", gradeToSign: " << f.getGradeToSign()
        << ", gradeToExec: " << f.getGradeToExec() << ">" << std::endl;
     return os;
