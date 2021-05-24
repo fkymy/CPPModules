@@ -6,14 +6,14 @@
 
 Intern::Intern() {}
 
+Intern::~Intern() {}
+
 Intern::Intern(const Intern& other) { (void)other; }
 
 Intern& Intern::operator=(const Intern& other) {
     (void)other;
     return *this;
 }
-
-Intern::~Intern() {}
 
 Form* Intern::makeForm(const std::string& name, const std::string& target) {
 #define X(classname, writtenname) \

@@ -7,15 +7,16 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-class ShrubberyCreationForm: public Form {
+class ShrubberyCreationForm: public Form
+{
 private:
     ShrubberyCreationForm();
 
 public:
     ShrubberyCreationForm(const std::string& target);
+    virtual ~ShrubberyCreationForm();
     ShrubberyCreationForm(const ShrubberyCreationForm& other);
     ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
-    virtual ~ShrubberyCreationForm();
 
     virtual void execute(const Bureaucrat& b) const;
 

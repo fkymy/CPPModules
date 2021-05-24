@@ -4,15 +4,16 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-class PresidentialPardonForm : public Form {
+class PresidentialPardonForm : public Form
+{
 private:
     PresidentialPardonForm();
 
 public:
     PresidentialPardonForm(const std::string& target);
+    virtual ~PresidentialPardonForm();
     PresidentialPardonForm(const PresidentialPardonForm& other);
     PresidentialPardonForm& operator=(const PresidentialPardonForm& other);
-    virtual ~PresidentialPardonForm();
 
     virtual void execute(const Bureaucrat& b) const;
 };

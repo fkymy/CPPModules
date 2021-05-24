@@ -12,23 +12,20 @@ private:
     bool isSigned;
     const int gradeToSign;
     const int gradeToExec;
+    std::string target;
 
     Form();
 
-protected:
-    std::string target;
-
 public:
-    Form(const std::string& name, int gradeToSign, int gradeToExec);
+    Form(const std::string& name, int gradeToSign, int gradeToExec, const std::string& target);
     virtual ~Form();
-
     Form(const Form& other);
     Form& operator=(const Form& other);
 
     const std::string& getName() const;
+    bool getIsSigned() const;
     int getGradeToSign() const;
     int getGradeToExec() const;
-    bool getIsSigned() const;
     const std::string& getTarget() const;
     void beSigned(const Bureaucrat& b);
     virtual void execute(const Bureaucrat& b) const;

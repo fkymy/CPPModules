@@ -10,16 +10,18 @@
     X(RobotomyRequestForm, "robotomy request") \
     X(PresidentialPardonForm, "presidential pardon")
 
-class Intern {
+class Intern
+{
 public:
     Intern();
+    ~Intern();
     Intern(const Intern& other);
     Intern& operator=(const Intern& other);
-    ~Intern();
 
     Form* makeForm(const std::string& name, const std::string& target);
 
-    class UnknownFormException: public std::exception {
+    class UnknownFormException: public std::exception
+    {
     private:
         std::string msg;
     public:
