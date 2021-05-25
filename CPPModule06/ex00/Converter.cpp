@@ -37,7 +37,6 @@ Converter::Converter(const std::string& input)
     value = std::strtod(pStart, &pEnd);
 
     if (pEnd[0] != '\0') {
-        std::cout << *pEnd << std::endl;
         if (value == 0 && strlen(pEnd) == 1)
             value = static_cast<double>(pEnd[0]);
         else if (!(pEnd[0] == 'f' && pEnd[1] == '\0'))
@@ -97,13 +96,8 @@ void Converter::printFloat() const {
         float f = static_cast<float>(value);
         if (!isinf(f) && !isnan(f) && (value < -FLT_MAX || value > FLT_MAX))
             throw ImpossibleException();
-        std::cout << static_cast<float>(value);
-
-        if (value == static_cast<int>(value))
-            std::cout << ".0f" << std::endl;
-        else
-            std::cout << "f" << std::endl;
-
+        std::cout << std::fixed << std::setprecision(1)
+                  << static_cast<float>(value) << "f" << std::endl;
     } catch (const std::exception& e) {
         std::cout << e.what() << std::endl;
     }
@@ -113,11 +107,8 @@ void Converter::printDouble() const {
     std::cout << "double: ";
     try {
         if (error) throw ImpossibleException();
-        std::cout << static_cast<double>(value);
-        if (value == static_cast<int>(value)) {
-            std::cout << ".0";
-        }
-        std::cout << std::endl;
+        std::cout << std::fixed << std::setprecision(1)
+                  << static_cast<double>(value) << std::endl;
     } catch (const std::exception& e) {
         std::cout << e.what() << std::endl;
     }
