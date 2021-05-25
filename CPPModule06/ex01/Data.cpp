@@ -1,16 +1,24 @@
 #include "Data.hpp"
 
+std::string* randomString(void) {
+    std::string* ret = new std::string(10, 'a');
+    for (std::string::iterator itr = ret->begin(); itr != ret->end(); ++itr)
+        *itr = std::rand() % 26 + 'a';
+    return ret;
+}
+
 void* serialize(void) {
     char* raw = new char[sizeof(Data)];
-    bzero(raw, sizeof(Data));
 
-    std::string* sp1 = new std::string("first random string");
-    int n = 42;
-    std::string* sp2 = new std::string("second random string");
+    std::srand(std::time(NULL));
 
-   *reinterpret_cast<std::string**>(raw) = sp1;
+    std::string* sp1 = randomString();
+    int n = std::rand();
+    std::string* sp2 = randomString();
+
+    *reinterpret_cast<std::string**>(raw) = sp1;
     *(reinterpret_cast<int*>(raw+8)) = n;
-   *reinterpret_cast<std::string**>(raw+8+4) = sp2;
+    *reinterpret_cast<std::string**>(raw+8+4) = sp2;
 
     return raw;
 }
