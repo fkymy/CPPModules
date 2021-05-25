@@ -40,25 +40,24 @@ void identify_from_reference(Base& p) {
 }
 
 Base* generate() {
+    Base* p;
     switch (std::rand() % 3) {
         case 0:
-            return new A;
+            p = new A;
+            break;
         case 1:
-            return new B;
+            p = new B;
+            break;
         case 2:
-            return new C;
-        default:
-            return NULL;
+            p = new C;
+            break;
     }
+
+    return p;
 }
 
 int main() {
-    Base base;
-    A a;
-    B b;
-    C c;
-
-    std::srand(std::time(0));
+    std::srand(std::time(NULL));
 
     for (int i = 0; i < 10; ++i) {
         std::cout << "TEST " << i << std::endl;
