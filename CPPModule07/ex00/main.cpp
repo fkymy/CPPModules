@@ -22,17 +22,17 @@ int main( void ) {
 
 #ifdef TEST
     int e = -42;
-    std::cout << "min( e, e ) = " << ::min( e, e ) << std::endl;
-    std::cout << "max( e, e ) = " << ::max( e, e ) << std::endl;
-    ::swap(e, e);
+    std::cout << "min( e, e ) = " << ::min<int>( e, e ) << std::endl;
+    std::cout << "max( e, e ) = " << ::max<int>( e, e ) << std::endl;
+    ::swap<int>(e, e);
     std::cout << "e = " << e << std::endl;
 
     char f = 'f';
     char g = 'g';
-    ::swap(f, g);
+    ::swap<char>(f, g);
     std::cout << "f = " << f << ", g = " << g << std::endl;
-    std::cout << "min( f, g ) = " << ::min( f, g ) << std::endl;
-    std::cout << "max( f, g ) = " << ::max( f, g ) << std::endl;
+    std::cout << "min( f, g ) = " << ::min<char>( f, g ) << std::endl;
+    std::cout << "max( f, g ) = " << ::max<char>( f, g ) << std::endl;
 
 #endif
     return 0;
