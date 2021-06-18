@@ -13,7 +13,7 @@ int main() {
     cout << 2147483647.0f << endl;
     cout << static_cast<int>(atof("  42 ")) << endl;
     cout << static_cast<int>(atof("-0")) << endl;
-    cout << static_cast<float>(2147483648) << endl;
+    cout << static_cast<float>(2147483647) << endl;
     return 0;
 
     float fInfinity = 1.0f / 0.0f;
