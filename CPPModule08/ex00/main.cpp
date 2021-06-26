@@ -5,6 +5,7 @@
 #include <set>
 
 int main() {
+
     {
         std::cout << "===== TEST ARRAY =====" << std::endl;
         std::array<int, 8> array = { 1, 1, 2, 3, 3, 4, 5, 6 };
