@@ -1,17 +1,12 @@
 #include "span.hpp"
+
 #include <iostream>
 
-Span::Span(unsigned int N) : N(N) {
-    // TODO: check for N exceptions
-}
+Span::Span(unsigned int N) : N(N) {}
 
-Span::~Span() {
-    clear();
-}
+Span::~Span() { clear(); }
 
-Span::Span(const Span& other) {
-    copyOther(other);
-}
+Span::Span(const Span& other) { copyOther(other); }
 
 Span& Span::operator=(const Span& other) {
     if (this != &other) {
@@ -26,23 +21,21 @@ void Span::clear() {
     set.clear();
 }
 
-void Span::copyOther(const Span &other) {
+void Span::copyOther(const Span& other) {
     N = other.N;
     set = other.set;
 }
 
 void Span::addNumber(unsigned int num) {
-    if (set.size() >= N)
-        throw NoSpaceException();
+    if (set.size() >= N) throw NoSpaceException();
     set.insert(num);
 }
 
 unsigned int Span::shortestSpan() const {
-    if (set.size() <= 1)
-        throw TooLittleException();
+    if (set.size() < 2) throw TooLittleException();
 
-    std::set<unsigned int>::const_iterator itr = set.begin();
-    std::set<unsigned int>::reverse_iterator rItr = set.rbegin();
+    std::multiset<unsigned int>::const_iterator itr = set.begin();
+    std::multiset<unsigned int>::reverse_iterator rItr = set.rbegin();
     unsigned int shortest = *rItr - *itr;
 
     unsigned int prev = *itr;
@@ -56,22 +49,10 @@ unsigned int Span::shortestSpan() const {
 }
 
 unsigned int Span::longestSpan() const {
-    if (set.size() <= 1)
-        throw TooLittleException();
+    if (set.size() < 2) throw TooLittleException();
 
-    // unsigned int span = 0;
-    // std::set<unsigned int>::const_iterator itr = set.begin();
-    // unsigned int prev = *itr;
-    // ++itr;
-    // for (; itr != set.end(); ++itr) {
-    //     unsigned int diff = *itr - prev;
-    //     if (diff > span) span = diff;
-    //     prev = *itr;
-    // }
-    // return span;
-
-    std::set<unsigned int>::const_iterator itr = set.begin();
-    std::set<unsigned int>::reverse_iterator rItr = set.rbegin();
+    std::multiset<unsigned int>::const_iterator itr = set.begin();
+    std::multiset<unsigned int>::reverse_iterator rItr = set.rbegin();
     return *rItr - *itr;
 }
 

@@ -6,9 +6,9 @@
 class Span {
 public:
     explicit Span(unsigned int N);
+    ~Span();
     Span(const Span& other);
     Span& operator=(const Span& other);
-    ~Span();
 
     unsigned int shortestSpan() const;
     unsigned int longestSpan() const;
@@ -37,7 +37,7 @@ public:
 
 private:
     unsigned int N;
-    std::set<unsigned int> set;
+    std::multiset<unsigned int> set;
 };
 
 #endif /* SPAN_HPP */
